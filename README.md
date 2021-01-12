@@ -1,1 +1,1 @@
-# Django Machine Learning
+# Stay sharp 
