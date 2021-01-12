@@ -1,0 +1,191 @@
+:root
+{
+  --background-color: #24293d;
+  --alternate-background-color: #2c3147;
+  --text-color: #ffffff;
+  --input-color: #373c55;
+  --border-color: 3px solid #2b3046;
+  --nav-color-active :#3e435c;
+}
+
+/* style dark dashboard */
+
+[data-theme="dark"]
+{
+  background-color:var(--background-color) !important;
+}
+
+[data-theme="dark"] .myNavbar
+{
+  background-color: var(--alternate-background-color) ;
+}
+
+[data-theme="dark"] .path-desc
+{
+  color: #ffffff ;
+}
+
+[data-theme="dark"] span.text
+{
+  color: #ffffff;
+}
+
+[data-theme="dark"] .sideMenu 
+{
+  background-color: var(--alternate-background-color);
+}
+
+[data-theme="dark"] .nav-link-dashboard:hover,
+[data-theme="dark"] .nav-link-dashboard.active
+{
+  background-color: var(--nav-color-active);
+}
+
+[data-theme = "dark"] .card-item-1,
+[data-theme = "dark"] .card-item-2,
+[data-theme = "dark"] .card-item-3
+{
+  box-shadow: 0 15px 30px #00000033;
+}
+[data-theme="dark"] .card-statistic 
+{
+  background-color: #2c3147 !important;
+}
+
+[data-theme="dark"] .rightMenu
+{
+  background-color: #2c3147 !important;
+  color: #ffff !important;
+}
+
+[data-theme="dark"] #myChartDashboard
+{
+  background-color: #2c3147 !important;
+  color: #ffff !important;
+}
+
+[data-theme="dark"] .card-statistic-calendar
+{
+  background-color: #2c3147 !important;
+  color: #ffff !important;
+}
+
+[data-theme="dark"] .icon-calendar
+{
+  color: #b62cec !important;
+}
+[data-theme="dark"] #monthAndYear
+{
+  color: #ffff !important;
+}
+
+[data-theme="dark"] #thead-month th
+{
+  color: #ffff !important;
+}
+
+[data-theme="dark"] #calendar-body td
+{
+  color: #ffff !important;
+}
+
+[data-theme="dark"] .footer-container-calendar select
+{
+  color: #ffff !important;
+  background-color: #2c3147 !important;
+}
+
+[data-theme = "dark"] .modal-logout
+{
+  background-color: #2c3147 !important;
+  color: #ffff !important;
+}
+
+[data-theme = "dark"] .modal-header-logout h5
+{
+  color: #ffffff;
+}
+
+[data-theme = "dark"] .close-modal-logout 
+{
+  color: #ffffff;
+}
+[data-theme = "dark"] .modal-body-logout p
+{
+  color: #ffffff;
+}
+/* style dark profile */
+
+[data-theme="dark"] .card-profile
+{
+  color: #ffff;
+  background-color: #2c3147;
+}
+
+[data-theme="dark"] .header-image
+{
+  background: url("/static/img/837283.jpg");
+}
+
+[data-theme = "dark"] .avatar-profile img
+{
+  border: var(--border-color);
+}
+
+[data-theme = "dark"] .button-image
+{
+  border: var(--border-color);
+}
+
+[data-theme = "dark"] .edit_username,
+[data-theme = "dark"] .edit_email
+{
+  background :var(--input-color);
+  border: 2px solid transparent;
+  color: #ffff;
+}
+
+[data-theme = "dark"] .edit_username:focus,
+[data-theme = "dark"] .edit_email:focus
+{
+  background: var(--input-color);
+  color: var(--text-color);
+  border: none;
+}
+
+/* style dark form */
+
+[data-theme = "dark"] #post-form
+{
+ 
+  color: var(--text-color);
+}
+
+[data-theme = "dark"] .card-statistic-header
+{
+  color: #ffffff;
+}
+
+[data-theme = "dark"] input.form-predict,
+[data-theme = "dark"] input.form-predict:focus
+{
+  background: var(--input-color);
+  color: var(--text-color);
+}
+
+[data-theme = "dark"] #prediction,
+[data-theme = "dark"] .heading-form,
+[data-theme = "dark"] #fa,
+[data-theme = "dark"] #va,
+[data-theme = "dark"] #ca,
+[data-theme = "dark"] #rs,
+[data-theme = "dark"] #c,
+[data-theme = "dark"] #fsd,
+[data-theme = "dark"] #tsd,
+[data-theme = "dark"] #d,
+[data-theme = "dark"] #ph,
+[data-theme = "dark"] #s,
+[data-theme = "dark"] #a
+{
+  color: var(--text-color);
+}

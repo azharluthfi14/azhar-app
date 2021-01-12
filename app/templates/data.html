@@ -1,0 +1,281 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    {% include "snippets/styles.html" %}
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body id="dasboard-body">
+    <div class="container">
+        <nav id="myNav" class="navbar myNavbar navbar-expand-md navbar-dark  fixed-top">
+            <a class="nav-link px-2  sideMenuToggler">
+                <i class="material-icons icon expandView icon-my-bavbar mr-2">
+                    menu
+                </i>
+            </a>
+            <div class="title-navbar">
+                <a href="{% url 'app:dashboard' %}" class="navbar-brand">
+                    <img src="{% static  'img/brand3.png' %}" alt="">
+                </a>
+            </div>
+            <button id="mobileNav" class=" navbar-toggler text-white" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="material-icons icon">
+                    menu_open
+                </i>
+            </button>
+            <div class="ml-auto collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="container">
+                    <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
+                        <img src="{{ user.profile.image.url }}" alt="" class="rounded-circle ml-auto mr-2">
+                        {{ request.user.username }}
+                    </div>
+                    <a href="{% url 'app:profile' user.username %}" class="ml-4">
+                        <i class="material-icons icon icon-my-bavbar">
+                            person
+                        </i>
+                    </a>
+                    <a id="NavRight" class="ml-4 right-menu-btn NavRight">
+                        <i class="material-icons icon icon-my-bavbar">
+                            settings
+                        </i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="wrapper d-flex">
+        <div class="sideMenu shadow">
+            <div class="sidebar">
+                <ul class="navbar-nav mt-4">
+                    <li class="nav-item active">
+                        <a href="{% url 'app:dashboard' %}" data-toggle="tooltip" title="Dashboard"
+                            class="nav-link nav-link-dashboard px-2 ">
+                            <i class="material-icons md-18 icon mycon mycon-1">
+                                dashboard
+                            </i>
+                            <span class="text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:profile' user.username %}" data-toggle="tooltip" title="Account Profile"
+                            class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons md-18 mycon mycon-2 icon">
+                                person
+                            </i>
+                            <span class="text">Account Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-dashboard px-2 disabled">
+                            <i class="material-icons icon md-18 mycon mycon-3">
+                                insert_chart
+                            </i>
+                            <span class="text">Charts</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:predict' %}" data-toggle="tooltip" title="Form"
+                            class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18 mycon-4">
+                                description
+                            </i>
+                            <span class="text">Form</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:data' %}" data-toggle="tooltip" title="Data"
+                            class="nav-link nav-link-dashboard px-2 active">
+                            <i class="material-icons icon mycon md-18 mycon-5">
+                                table_view
+                            </i>
+                            <span class="text">Data</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-dashboard px-2 disabled">
+                            <i class="material-icons icon mycon md-18 mycon-6">
+                                list
+                            </i>
+                            <span class="text">Todo List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:table' %}" class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18 mycon-7">
+                                table_view
+                            </i>
+                            <span class="text">Table Data</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="modal" data-target="#modalLogOut"
+                            class="nav-link btn-logout nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18 mycon-8">
+                                login
+                            </i>
+                            <span class="text text-white">Sign out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="menuRight" class="rightMenu animate__animated animate__slideInRight shadow">
+            <div class="sidebarRight">
+                <div class="color-button">
+                    <h6 class="path-desc font-weight-bold mb-3">Change Navbar Background</h6>
+                    <div class="row">
+                        <div class="col">
+                            <div class="btn-color btn-color-purple" type="button" onclick="changeHeadingBg('#8315c4');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-blue" type="button" onclick="changeHeadingBg('#0b8dc9');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-green" type="button" onclick="changeHeadingBg('#008080');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-gray" type="button" onclick="changeHeadingBg('#666666');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-red" type="button" onclick="changeHeadingBg('#f84646');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-orange" type="button" onclick="changeHeadingBg('#f19823');">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-control custom-switch mt-4">
+                        <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                        <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content mt-4">
+            <main>
+                <div class="container-fluid">
+                    <div class="item">
+                        <div class="col-8">
+                            <div class="d-inline path-design">
+                                <button class="btn btn-primary d-inline"><i class="fas fa-table"></i></button>
+                                <h6 class="d-inline ml-2 path-desc font-weight-bold">Dataset</h6>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <div class="card-data shadow">
+                                <div class="container">
+                                    <div class="table-responsive">
+                                        <table id="myTable" class="table container-fluid table-hover">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Fixed acidity</th>
+                                                    <th scope="col">Volatile acidity</th>
+                                                    <th scope="col">Critic acid</th>
+                                                    <th scope="col">Residual sugar</th>
+                                                    <th scope="col">Chlorides</th>
+                                                    <th scope="col">Free sulfur</th>
+                                                    <th scope="col">Total sulfur</th>
+                                                    <th scope="col">Density</th>
+                                                    <th scope="col">pH</th>
+                                                    <th scope="col">Sulphates</th>
+                                                    <th scope="col">Alcohol</th>
+                                                    <th scope="col">Classification</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for data in Wine %}
+                                                <tr class="text-center">
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>{{ data.fixed_acidity }}</td>
+                                                    <td>{{ data.volatile_acidity }}</td>
+                                                    <td>{{ data.citric_acid }}</td>
+                                                    <td>{{ data.residual_sugar }}</td>
+                                                    <td>{{ data.chlorides }}</td>
+                                                    <td>{{ data.free_sulfur_dioxide }}</td>
+                                                    <td>{{ data.total_sulfur_dioxide }}</td>
+                                                    <td>{{ data.density }}</td>
+                                                    <td>{{ data.pH }}</td>
+                                                    <td>{{ data.sulphates }}</td>
+                                                    <td>{{ data.alcohol }}</td>
+                                                    <td>{{ data.classification }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Logout-->
+    <div class="modal fade" id="modalLogOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog" role="document">
+            <div class="modal-content modal-logout">
+                <div class="modal-header modal-header-logout">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Are you sure want to logout ?</h5>
+                    <button type="button" class="close close-modal-logout" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-body-logout">
+                    <p>If you logout, you must login again to access this page.</p>
+                </div>
+                <div class="modal-footer modal-footer-logout">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="{% url 'app:logout' %}" type="button" class="btn myBtn">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "snippets/scripts.html" %}
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+
+        document.getElementById("NavRight").addEventListener("click", rightMenu);
+        document.getElementById("mobileNav").addEventListener("click", rightMenu);
+        function rightMenu() {
+            const searchbar = document.getElementById("menuRight");
+            const display = getComputedStyle(menuRight).display;
+
+            if (display == "none") {
+                searchbar.style.display = "block";
+            } else {
+                searchbar.style.display = "none";
+            }
+        }
+
+        function changeHeadingBg(color) {
+            document.getElementById("myNav").style.background = color;
+        }
+
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+
+</body>
+
+</html>

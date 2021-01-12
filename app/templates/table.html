@@ -1,0 +1,333 @@
+{% load static %}
+{% load crispy_forms_tags  %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Account</title>
+    {% include "snippets/styles.html" %}
+</head>
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .form-text {
+        display: none;
+    }
+
+    .asteriskField {
+        display: none;
+    }
+</style>
+
+<body id="dasboard-body">
+    <div class="container">
+        <nav id="myNav" class="navbar myNavbar navbar-expand-md navbar-dark  fixed-top">
+            <a class="nav-link px-2  sideMenuToggler">
+                <i class="material-icons icon expandView icon-my-bavbar mr-2">
+                    menu
+                </i>
+            </a>
+            <div class="title-navbar">
+                <a href="{% url 'app:dashboard' %}" class="navbar-brand">
+                    <img src="{% static "img/brand3.png" %}" alt="">
+                </a>
+            </div>
+            <button id="mobileNav" class=" navbar-toggler text-white" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="material-icons icon">
+                    menu_open
+                </i>
+            </button>
+            <div class="ml-auto collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="container">
+                    <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
+                        <img src="{{ user.profile.image.url }}" alt="" class="rounded-circle ml-auto mr-2">
+                        {{ request.user.username }}
+                    </div>
+                    <a href="{% url 'app:profile' user.username %}" class="ml-4">
+                        <i class="material-icons icon icon-my-bavbar">
+                            person
+                        </i>
+                    </a>
+                    <a id="NavRight" class="ml-4 right-menu-btn NavRight">
+                        <i class="material-icons icon icon-my-bavbar">
+                            settings
+                        </i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="wrapper d-flex">
+        <div class="sideMenu shadow">
+            <div class="sidebar">
+                <ul class="navbar-nav mt-4">
+                    <li class="nav-item ">
+                        <a href="{% url 'app:dashboard' %}" class="nav-link nav-link-dashboard px-2 ">
+                            <i class="material-icons icon">
+                                dashboard
+                            </i>
+                            <span class="text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:profile' user.username %}" class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon">
+                                person
+                            </i>
+                            <span class="text">Account Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon">
+                                insert_chart
+                            </i>
+                            <span class="text">Charts</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:predict' %}" class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon">
+                                description
+                            </i>
+                            <span class="text">Form</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon">
+                                list
+                            </i>
+                            <span class="text">Todo List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="{% url 'app:table' %}" class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon">
+                                table_view
+                            </i>
+                            <span class="text">Table</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="modal" data-target="#modalLogOut"
+                            class="nav-link btn-logout nav-link-dashboard px-2">
+                            <i class="material-icons icon">
+                                login
+                            </i>
+                            <span class="text">Sign out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="menuRight" class="rightMenu animate__animated animate__slideInRight shadow">
+            <div class="sidebarRight">
+                <div class="color-button">
+                    <h6 class="path-desc font-weight-bold mb-3">Change Navbar Background</h6>
+                    <div class="row">
+                        <div class="col">
+                            <div class="btn-color btn-color-purple" type="button" onclick="changeHeadingBg('#8315c4');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-blue" type="button" onclick="changeHeadingBg('#0b8dc9');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-green" type="button" onclick="changeHeadingBg('#008080');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-gray" type="button" onclick="changeHeadingBg('#666666');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-red" type="button" onclick="changeHeadingBg('#f84646');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-orange" type="button" onclick="changeHeadingBg('#f19823');">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-control custom-switch mt-4">
+                        <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                        <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <main class="animate__animated animate__fadeIn">
+                <div class="container-fluid">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-12 col-md col-lg">
+                                <div class="list-item">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 my-3">
+                                            <div class="card-table card-table-1">
+                                                <div class="card-table-img">
+                                                    <button class="btn btn-table"><i class="material-icons icon">
+                                                            table_view
+                                                        </i></button>
+                                                </div>
+                                                <div class="card-table-desc">
+                                                    <h5>New Meeting</h5>
+                                                    <p>Create custom room to start.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 my-3">
+                                            <div class="card-table card-table-bg">
+                                                <div class="card-table-img">
+                                                    <button class="btn btn-table"><i class="material-icons icon">
+                                                            add_a_photo
+                                                        </i></button>
+                                                </div>
+                                                <div class="card-table-desc">
+                                                    <h5>Join Meeting</h5>
+                                                    <p>Create custom room to start.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 my-3">
+                                            <div class="card-table card-table-bg">
+                                                <div class="card-table-img">
+                                                    <button class="btn btn-table"><i class="material-icons icon">
+                                                            note_add
+                                                        </i></button>
+                                                </div>
+                                                <div class="card-table-desc">
+                                                    <h5>Share Meeting</h5>
+                                                    <p>Create custom room to start.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 my-3">
+                                            <div class="card-table card-table-bg">
+                                                <div class="card-table-img">
+                                                    <button class="btn btn-table"><i class="material-icons icon">
+                                                            queue
+                                                        </i></button>
+                                                </div>
+                                                <div class="card-table-desc">
+                                                    <h5>Add Meeting</h5>
+                                                    <p>Create custom room to start.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md col-lg-6">
+                                <div class="list-item">
+                                    <div class="time-card card-table my-3">
+                                        <div class="card-table-2">
+                                            <h2 class="time"></h2>
+                                            <h6 id="waktu"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-table card-item-table-2 shadow my-4">
+                                        <h6>User Active</h6>
+                                        <div class="pict-account mt-3">
+                                            {% for pict  in data %}
+                                            <div class="table-image">
+                                                <img src="{{ pict.image.url }}" class="rounded-square ml-auto mr-2"
+                                                    alt="">
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Modal Logout-->
+    <div class="modal fade" id="modalLogOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog" role="document">
+            <div class="modal-content modal-logout">
+                <div class="modal-header modal-header-logout">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Are you sure want to logout ?</h5>
+                    <button type="button" class="close close-modal-logout" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-body-logout">
+                    <p>If you logout, you must login again to access this page.</p>
+                </div>
+                <div class="modal-footer modal-footer-logout">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="{% url 'app:logout' %}" type="button" class="btn myBtn">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "snippets/scripts.html" %}
+    <script>
+
+        document.getElementById("NavRight").addEventListener("click", rightMenu);
+        document.getElementById("mobileNav").addEventListener("click", rightMenu);
+        function rightMenu() {
+            const searchbar = document.getElementById("menuRight");
+            const display = getComputedStyle(menuRight).display;
+
+            if (display == "none") {
+                searchbar.style.display = "block";
+            } else {
+                searchbar.style.display = "none";
+            }
+        }
+
+        function changeHeadingBg(color) {
+            document.getElementById("myNav").style.background = color;
+        }
+
+        function clock() {
+            const time = new Date(),
+                hours = time.getHours(),
+                minutes = time.getMinutes()
+
+            document.querySelectorAll('.time')[0].innerHTML = harold(hours) + ":" + harold(minutes);
+
+            function harold(standIn) {
+                if (standIn < 10) {
+                    standIn = '0' + standIn
+                }
+                return standIn;
+            }
+        }
+        setInterval(clock, 1000);
+
+        const x = moment().format('dddd' + ', ' + 'DD ' + '' + 'MMMM ' + ' YYYY');
+        document.getElementById("waktu").innerHTML = x;
+
+
+        var dayNight = document.querySelector('.time-card');
+        var currentTime = new Date()
+        var jam = currentTime.getHours()
+        var menit = currentTime.getMinutes()
+
+        if (jam < 6 || jam >= 14) {
+            console.log('night');
+            dayNight.classList.add('card-item-table-1');
+        }
+        if (jam >= 6 && jam < 14) {
+            console.log('day');
+            dayNight.classList.add('nacht');
+        }
+    </script>
+</body>
+
+</html>

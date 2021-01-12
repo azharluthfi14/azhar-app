@@ -1,0 +1,359 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Account Profile</title>
+    {% include "snippets/styles.html" %}
+</head>
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .form-text {
+        display: none;
+    }
+
+    .asteriskField {
+        display: none;
+    }
+</style>
+
+<body id="dasboard-body">
+    <div class="container">
+        <nav id="myNav" class="navbar myNavbar navbar-expand-md navbar-dark  fixed-top">
+            <a class="nav-link px-2  sideMenuToggler">
+                <i class="material-icons icon expandView icon-my-bavbar mr-2">
+                    menu
+                </i>
+            </a>
+            <div class="title-navbar">
+                <a href="{% url 'app:dashboard' %}" class="navbar-brand">
+                    <img src="{% static  'img/brand3.png' %}" alt="">
+                </a>
+            </div>
+            <button id="mobileNav" class=" navbar-toggler text-white" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="material-icons icon">
+                    menu_open
+                </i>
+            </button>
+            <div class="ml-auto collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="container">
+                    <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
+                        <img src="{{ user.profile.image.url }}" alt="" class="rounded-circle ml-auto mr-2">
+                        {{ request.user.username }}
+                    </div>
+                    <a href="{% url 'app:profile' user.username %}" class="ml-4">
+                        <i class="material-icons icon icon-my-bavbar">
+                            person
+                        </i>
+                    </a>
+                    <a id="NavRight" class="ml-4 right-menu-btn NavRight">
+                        <i class="material-icons icon icon-my-bavbar">
+                            settings
+                        </i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="wrapper d-flex">
+        <div class="sideMenu shadow">
+            <div class="sidebar">
+                <ul class="navbar-nav mt-4">
+                    <li class="nav-item active">
+                        <a href="{% url 'app:dashboard' %}" data-toggle="tooltip" title="Dashboard"
+                            class="nav-link nav-link-dashboard  px-2 ">
+                            <i class="material-icons md-18 icon mycon mycon-1">
+                                dashboard
+                            </i>
+                            <span class="text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:profile' user.username %}" data-toggle="tooltip" title="Account Profile"
+                            class="nav-link nav-link-dashboard px-2 active">
+                            <i class="material-icons md-18 mycon mycon-2 icon">
+                                person
+                            </i>
+                            <span class="text">Account Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-dashboard px-2 disabled">
+                            <i class="material-icons icon md-18 mycon mycon-3">
+                                insert_chart
+                            </i>
+                            <span class="text">Charts</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:predict' %}" data-toggle="tooltip" title="Form"
+                            class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18 mycon-4">
+                                description
+                            </i>
+                            <span class="text">Form</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:data' %}" data-toggle="tooltip" title="Data"
+                            class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18 mycon-5">
+                                table_view
+                            </i>
+                            <span class="text">Data</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link nav-link-dashboard px-2 disabled">
+                            <i class="material-icons icon mycon md-18 mycon-6">
+                                list
+                            </i>
+                            <span class="text">Todo List</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'app:table' %}" class="nav-link nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18 mycon-7">
+                                table_view
+                            </i>
+                            <span class="text">Table Data</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-toggle="modal" data-target="#modalLogOut"
+                            class="nav-link btn-logout nav-link-dashboard px-2">
+                            <i class="material-icons icon mycon md-18 mycon-8">
+                                login
+                            </i>
+                            <span class="text text-white">Sign out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="menuRight" class="rightMenu animate__animated animate__slideInRight shadow">
+            <div class="sidebarRight">
+                <div class="color-button">
+                    <h6 class="path-desc font-weight-bold mb-3">Change Navbar Background</h6>
+                    <div class="row">
+                        <div class="col">
+                            <div class="btn-color btn-color-purple" type="button" onclick="changeHeadingBg('#8315c4');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-blue" type="button" onclick="changeHeadingBg('#0b8dc9');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-green" type="button" onclick="changeHeadingBg('#008080');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-gray" type="button" onclick="changeHeadingBg('#666666');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-red" type="button" onclick="changeHeadingBg('#f84646');">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="btn-color btn-color-orange" type="button" onclick="changeHeadingBg('#f19823');">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-control custom-switch mt-4">
+                        <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+                        <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header-image">
+            </div>
+            <main class="animate__animated animate__fadeIn">
+                <div class="container-fluid">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-10 col-sm  mt-4">
+                                <div class="d-inline path-design">
+                                    <button class="btn btn-warning d-inline"><i
+                                            class="fas fa-user text-white"></i></button>
+                                    <h6 class="font-weight-bold text-white d-inline ml-2 ">Account setting</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-content">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-profile animate__animated animate__slideInUp   alert-{% if message.tags == 'error'%}danger {% else %}{{message.tags}}{% endif %}"
+                                role="alert">
+                                {{ message }}
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            <form method="POST" enctype="multipart/form-data" autocomplete="off"
+                                class="profile-form mt-5">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-4 col-sm col-xs-auto account-desc my-2">
+                                        <div class="card-profile shadow h-100">
+                                            <div class="avatar-profile">
+                                                <img class="profile-image rounded-circle img-fluid"
+                                                    src="{{ user.profile.image.url }}">
+                                                <div class="id mt-5 text-left">
+                                                    <h3 class="path-desc">Information</h3>
+                                                    <h6 class="path-desc"><i class="fas fa-user mr-2"></i>Username :
+                                                        {{ request.user.username }}
+                                                    </h6>
+                                                    <h6 class="path-desc"><i class="fas fa-envelope mr-2"></i>Email
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;:
+                                                        {{ request.user.email }}
+                                                    </h6>
+                                                    <h6 class="path-desc"><i
+                                                            class="fas fa-file-signature mr-2"></i>Fullname&nbsp; :
+                                                        {{ request.user.first_name }} {{ request.user.last_name }}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="button-image">
+                                            <i class="fa fa-camera upload-button"></i>
+                                            <input name="image" id="id_image" class="file-upload " type="file"
+                                                accept="image/*" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md col-xs-auto col-sm my-2">
+                                        <div class="card-profile shadow">
+                                            <h2 class="font-weight-bold mb-3">My Profile</h2>
+                                            {% csrf_token %}
+                                            {{ user_form.username | as_crispy_field }}
+                                            <div class="form-row">
+                                                <div class="form-group col-sm-6">
+                                                    {{ user_form.first_name | as_crispy_field }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    {{ user_form.last_name | as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            {{ user_form.email | as_crispy_field }}
+                                            <div class="form-group">
+                                                <button id="button" class="btn myBtn btn-lg btn-block mt-4"
+                                                    type="submit">Update
+                                                    profile</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="{{ user.profile.image.url }}" alt="" class="rounded-circle">
+                        </div>
+                        <div class="col">
+                            <h5 class="font-weight-bold">Profile</h5>
+                            <p>Username : {{ request.user.username }}</p>
+                            <p>Status : Admin</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning">Edit profile</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Logout-->
+    <div class="modal fade" id="modalLogOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog" role="document">
+            <div class="modal-content modal-logout">
+                <div class="modal-header modal-header-logout">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Are you sure want to logout ?</h5>
+                    <button type="button" class="close close-modal-logout" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body modal-body-logout">
+                    <p>If you logout, you must login again to access this page.</p>
+                </div>
+                <div class="modal-footer modal-footer-logout">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="{% url 'app:logout' %}" type="button" class="btn myBtn">Sign out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "snippets/scripts.html" %}
+    <script>
+        $(document).ready(function () {
+
+            let readURL = function (input) {
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('.profile-image').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $(".file-upload").on('change', function () {
+                readURL(this);
+            });
+
+            $(".upload-button").on('click', function () {
+                $(".file-upload").click();
+            });
+        });
+
+        document.getElementById("NavRight").addEventListener("click", rightMenu);
+        document.getElementById("mobileNav").addEventListener("click", rightMenu);
+        function rightMenu() {
+            const searchbar = document.getElementById("menuRight");
+            const display = getComputedStyle(menuRight).display;
+
+            if (display == "none") {
+                searchbar.style.display = "block";
+            } else {
+                searchbar.style.display = "none";
+            }
+        }
+
+        changeHeadingBg = (color) => {
+            document.getElementById("myNav").style.background = color;
+        }
+
+
+        if (jam < 6 || jam >= 14) {
+            console.log('night');
+            dayNight.classList.add('card-item-table-1');
+        }
+        if (jam >= 6 && jam < 14) {
+            console.log('day');
+            dayNight.classList.add('nacht');
+        }
+
+    </script>
+</body>
+
+</html>

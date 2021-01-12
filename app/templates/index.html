@@ -1,0 +1,334 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/hover.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="shortcut icon" href="{% static 'img/wumbo.ico' %}" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <title>Home - Scientics</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+
+<body id="landing-page">
+  <div class="section-header"></div>
+  <div class="header-landing">
+    <nav id="nav-bar" class="navbar fixed-top navbar-expand-md navbar-dark nav-landing">
+      <div class="container container-fluid">
+        <div class="nav-landing-brand d-inline">
+          <img src="{% static 'img/brand3.png' %}" alt="" />
+        </div>
+        <button id="nav-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="item-nav item-nav-landing">
+              <a class="nav-link active" href="#main-page-landing">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="item-nav item-nav-landing">
+              <a class="nav-link" href="#card-landing">Technology</a>
+            </li>
+            <li class="item-nav item-nav-landing">
+              <a class="nav-link" href="#desc-landing">API</a>
+            </li>
+            <li class="item-nav item-nav-landing">
+              <a class="nav-link" href="#item-1">Products</a>
+            </li>
+            <li class="item-nav item-nav-landing">
+              <a class="nav-link" href="#desc-landing">Developers</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="header-content">
+        <div class="effect-wrap">
+          <div class="effect effect-1"></div>
+          <div class="effect effect-2"></div>
+          <div class="effect effect-3"></div>
+          <div class="effect effect-dot">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="effect effect-4-square"></div>
+          <div class="effect effect-5-square"></div>
+          <div class="effect effect-6-square"></div>
+          <div class="effect effect-7-square"></div>
+          <div class="effect effect-8"></div>
+        </div>
+        <div class="row">
+          <div class="col-lg-7 col-sm-12 header-text">
+            <div class="header-heading">
+              <div class="header-col col-sm-12 col-xs-12 col-md-10 col-lg-10 mb-3">
+                <p class="text-white"><span>New</span> The applications for artificial intelligence are endless.</p>
+              </div>
+              <h1 class="heading-1">
+                <span class="title-animation">Artificial Intelligence</span> Creating the Future.
+              </h1>
+              <p class="animate__animated animate__fadeIn">
+                Machine learning, in the simplest terms, is the analysis of statistics to help computers make decisions
+                base on repeatable characteristics found in the data.
+              </p>
+              <div class="row">
+                <div class="col-sm-12 col-lg-4 my-2">
+                  <a id="test" href="{% url 'app:signup' %}" class="btn btn-index-signup hvr-icon-pulse shadow">Sign up
+                    <i class="fa fa-angle-right hvr-icon ml-3"></i></a>
+                </div>
+                <div class="col-sm-12 col-lg-4 my-2">
+                  <a href="{% url 'app:signin' %}" class="btn btn-index-signin">Sign in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-sm-12">
+            <div class="img-page-banner">
+              <img class="img-fluid" src="{% static 'img/undraw_data_xmfy.svg' %}" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-landing" id="card-landing">
+    <div class="container card-landing-desc">
+      <h1 class="card-heading headline">What we do</h1>
+      <p>We’ve been working with the teams around the world.</p>
+      <div class="owl-carousel owl-theme card-list">
+        <div class="mx-2">
+          <div class="card-item-landing shadow">
+            <div class="card-item-img">
+              <img src="{% static 'img/analytics-1.svg' %}" alt="" />
+            </div>
+            <h3>Data Analysis</h3>
+            <h6 class="text-center">Discovering useful information for supporting decision-making.</h6>
+          </div>
+        </div>
+        <div class="mx-2">
+          <div class="card-item-landing shadow">
+            <div class="card-item-img">
+              <img src="{% static 'img/analytics-2.svg' %}" alt="" />
+            </div>
+            <h3>Data Training</h3>
+            <h6 class="text-center">Data you use to train an algorithm or machine learning model.</h6>
+          </div>
+        </div>
+        <div class="mx-2">
+          <div class="card-item-landing shadow">
+            <div class="card-item-img">
+              <img src="{% static 'img/visualization.svg' %}" alt="" />
+            </div>
+            <h3>Data Visualization</h3>
+            <h6 class="text-center">An interdisciplinary field with the graphic representation of data</h6>
+          </div>
+        </div>
+        <div class="mx-2">
+          <div class="card-item-landing shadow">
+            <div class="card-item-img">
+              <img src="{% static 'img/report.svg' %}" alt="" />
+            </div>
+            <h3>Data Science</h3>
+            <h6 class="text-center">Impress with these beautiful landing pages</h6>
+          </div>
+        </div>
+        <div class="mx-2">
+          <div class="card-item-landing shadow">
+            <div class="card-item-img">
+              <img src="{% static 'img/algorithm.svg' %}" alt="" />
+            </div>
+            <h3>Top Algorithm</h3>
+            <h6 class="text-center">Impress with these beautiful landing pages</h6>
+          </div>
+        </div>
+        <div class="mx-2">
+          <div class="card-item-landing shadow">
+            <div class="card-item-img">
+              <img src="{% static 'img/artificial.svg' %}" alt="" />
+            </div>
+            <h3>Report Data</h3>
+            <h6 class="text-center">Impress with these beautiful landing pages</h6>
+          </div>
+        </div>
+      </div>
+      <svg id="hexa-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 640 480" style="enable-background:new 0 0 640 480;" xml:space="preserve">
+        <style type="text/css">
+          .st0 {
+            fill: #ffffff;
+          }
+        </style>
+        <polygon id="XMLID_1_" class="st0" points="424,298.5 319.5,358.9 215,298.5 215,177.5 319.5,117.1 424,177.5 " />
+      </svg>
+      <svg id="hexa-2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 640 480" style="enable-background:new 0 0 640 480;" xml:space="preserve">
+        <style type="text/css">
+          .st1 {
+            fill: #41e9ff;
+          }
+        </style>
+        <polygon id="XMLID_1_" class="st1" points="424,298.5 319.5,358.9 215,298.5 215,177.5 319.5,117.1 424,177.5 " />
+      </svg>
+      <svg id="hexa-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 640 480" style="enable-background:new 0 0 640 480;" xml:space="preserve">
+        <style type="text/css">
+          .st2 {
+            fill: #bb56ff;
+          }
+        </style>
+        <polygon id="XMLID_1_" class="st2" points="424,298.5 319.5,358.9 215,298.5 215,177.5 319.5,117.1 424,177.5 " />
+      </svg>
+    </div>
+  </div>
+  <div class="container">
+    <div class="section-item">
+      <div class="item-desc col-sm-12 col-lg-8">
+        <h6 class="text-center"><span class="text-primary">*Good to know! </span>You are not limited to the examples
+          we've built. We have the liberty to
+          choose any of the page
+          layouts and components from the package and create your own version.</h6>
+      </div>
+    </div>
+  </div>
+  <div class="section-test">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-lg-6">
+          <div class="card-test shadow">
+            <img class="img-fluid" src="{% static 'img/dashboard-1.jpeg' %}" alt="">
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-5">
+          <div class="section-test-desc">
+            <h3 class="mb-4">Change the way you build wesites. Forever.</h3>
+            <p>With Purpose you get components and examples, including tons of variables that will help you customize
+              this theme with ease.</p>
+            <a href="{% url 'app:signup' %}" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="btnScrollToTop" data-show="false">
+    <div class="arrow-up">
+      <span class="material-icons">
+        keyboard_arrow_up
+      </span>
+    </div>
+  </button>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.mousewheel.min.js' %}"></script>
+<script src="{% static 'js/scroll.js' %}"></script>
+<script>
+  AOS.init();
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > 70) {
+      $("#nav-bar").addClass("bg-smoke shadow-header ");
+    } else {
+      $("#nav-bar").removeClass("bg-smoke shadow-header");
+    }
+  });
+
+  const owl = $(".owl-carousel");
+  owl.owlCarousel({
+    dots: true,
+    loop: true,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      1000: {
+        items: 3,
+        loop: false,
+      },
+    },
+  });
+  owl.on("mousewheel", ".owl-stage", function (e) {
+    if (e.deltaY > 0) {
+      owl.trigger("next.owl");
+    } else {
+      owl.trigger("prev.owl");
+    }
+    e.preventDefault();
+  });
+
+  window.onscroll = function () {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      document.getElementById("btnScrollToTop").style.display = "block";
+    }
+    else {
+      document.getElementById("btnScrollToTop").style.display = "none";
+    }
+  };
+
+  document.getElementById('btnScrollToTop').addEventListener('click', scrollToTop)
+  function scrollToTop() {
+    document.documentElement.scrollTop = 0;
+  }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Sciencetics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="shortcut icon" href="{% static "img/wumbo.ico" %}">
+</head>
+<style>
+    body {
+        overflow-x: hidden;
+    }
+</style>
+
+<body id="signin">
+    <div class="row">
+        <div class="col-md-5 item-page">
+            <div class="item_sign fixed">
+                <h1>Welcome</h1>
+                <h4>Dont have an account ?</h4>
+                <a class="btn btn-outline-dark btn-block btn-lg" href="{% url 'app:signup' %}">Sign up now</a>
+                <img class="img-fluid animate__animated animate__rubberBand"
+                    src="{% static "img/undraw_data_trends_b0wg.png" %}" alt="">
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-7 col-lg form-page-login">
+            <div class="my-card">
+                <div class="animate__animated animate__fadeInUp">
+                    <div class="messages_error">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div id="success-alert"
+                            class="alert text-center mb-3 alert-{% if message.tags == 'error'%}danger{% else %}{{message.tags}}{% endif %}"
+                            role="alert" style="text-align: center;">
+                            {{ message }}
+                            <!-- <a href="{% url 'app:signin' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a> -->
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <a href="{% url 'app:index' %}" class="brand-login text-decoration-none">
+                    <img class="brand-img" src="{% static "img/brand2_white.png" %}" alt="">
+                </a>
+                <h2 class="my-4"><span class="text-sign">Sign in </span>with your account</h2>
+                <form method="POST" action="" autocomplete="off" id="form-signin">
+                    {% csrf_token %}
+                    <div class="input-group field mb-4">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="username" required placeholder="Username or email"
+                            class="form-control form-sign">
+                    </div>
+                    <div class="input-group mb-5">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" name="password" required placeholder="Password"
+                            class="form-control form-sign" id="showPass1">
+                    </div>
+                    <div class="form-check ml-2">
+                        <input class="form-check-input checkbox" onclick="showPass()" type="checkbox">
+                        <label class="form-check-label" for="inlineCheckbox1">Show
+                            Password</label>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <input class="btn myBtn btn-block mb-3" type="submit" value="Sign in">
+                    </div>
+                </form>
+                <div class="mt-4 link-signin">
+                    <div class="links"><i class="fas fa-user-edit"></i>
+                        Don't have an account? <a href="{% url 'app:signup' %}" class=" mx-2 text-link">Sign
+                            Up</a> now
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
+<script type="text/javascript"></script>
+<script>
+    showPass = () => {
+        const showPass = document.getElementById("showPass1")
+        if (showPass.type === "password") {
+            showPass.type = "text";
+
+        } else {
+            showPass.type = "password";
+        }
+    }
+</script>
+
+</html>
