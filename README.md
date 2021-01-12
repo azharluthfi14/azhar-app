@@ -1,1 +1,1 @@
-# azhar-app
+# Django Machine Learning
